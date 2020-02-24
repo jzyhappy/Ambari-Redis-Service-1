@@ -394,7 +394,7 @@ repl-diskless-sync-delay {{repl_diskless_sync_delay}}
 # By default we optimize for low latency, but in very high traffic conditions
 # or when the master and replicas are many hops away, turning this to "yes" may
 # be a good idea.
-repl-disable-tcp-nodelay {{{{repl_disable_tcp_nodelay}}}}
+ {{repl_disable_tcp_nodelay}}
 
 # Set the replication backlog size. The backlog is a buffer that accumulates
 # replica data when replicas are disconnected for some time, so that when a replica
