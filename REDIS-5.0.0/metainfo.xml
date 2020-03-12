@@ -71,6 +71,7 @@
 
             <configuration-dependencies>
                 <config-type>redis-env</config-type>
+                <config-type>redis-conf-modules</config-type>
                 <config-type>redis-conf-general</config-type>
                 <config-type>redis-conf-network</config-type>
                 <config-type>redis-conf-cluster</config-type>
