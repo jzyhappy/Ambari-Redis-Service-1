@@ -89,6 +89,13 @@ class RedisMaster(Script):
              owner=params.redis_user,
              group=params.redis_group
              )
+        
+        modules_configurations = params.config['configurations']['redis-conf-modules']
+        File(format("{redis_base_dir}/redis.conf"),
+             content=Template("redis-master.conf.j2", configurations=modules_configurations),
+             owner=params.redis_user,
+             group=params.redis_group
+             )
 
         cmd = format("chown -R {redis_user}:{redis_group} {redis_base_dir}")
         Execute(cmd)
