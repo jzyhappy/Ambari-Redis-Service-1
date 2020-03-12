@@ -61,7 +61,14 @@ class RedisMaster(Script):
     def configure(self, env):
         import params
         env.set_params(params)
-
+                
+        modules_configurations = params.config['configurations']['redis-conf-modules']
+        File(format("{redis_base_dir}/redis.conf"),
+             content=Template("redis-master.conf.j2", configurations=modules_configurations),
+             owner=params.redis_user,
+             group=params.redis_group
+             )
+        
         network_configurations = params.config['configurations']['redis-conf-network']
         File(format("{redis_base_dir}/redis.conf"),
              content=Template("redis-master.conf.j2", configurations=network_configurations),
@@ -86,13 +93,6 @@ class RedisMaster(Script):
         storage_configurations = params.config['configurations']['redis-conf-storage']
         File(format("{redis_base_dir}/redis.conf"),
              content=Template("redis-master.conf.j2", configurations=storage_configurations),
-             owner=params.redis_user,
-             group=params.redis_group
-             )
-        
-        modules_configurations = params.config['configurations']['redis-conf-modules']
-        File(format("{redis_base_dir}/redis.conf"),
-             content=Template("redis-master.conf.j2", configurations=modules_configurations),
              owner=params.redis_user,
              group=params.redis_group
              )
