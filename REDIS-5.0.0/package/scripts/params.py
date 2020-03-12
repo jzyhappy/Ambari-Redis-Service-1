@@ -34,6 +34,12 @@ conf_file_slave = redis_base_dir_slave + '/redis.conf'
 
 
 # = = = = = = = = = = = = = = = = = = = =
+#          redis modules config
+# = = = = = = = = = = = = = = = = = = = =
+# MODULES
+loadmodule = config['configurations']['redis-conf-modules']['loadmodule']
+
+# = = = = = = = = = = = = = = = = = = = =
 #          redis network config
 # = = = = = = = = = = = = = = = = = = = =
 bind = config['configurations']['redis-conf-network']['bind']
